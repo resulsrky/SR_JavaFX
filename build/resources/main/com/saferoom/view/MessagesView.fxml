@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+
+<BorderPane styleClass="page-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.saferoom.controller.MessagesController">
+    <left>
+        <!-- Chat List -->
+        <VBox spacing="16.0" styleClass="chat-sidebar" minWidth="300.0">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="12.0">
+                    <children>
+                        <Label styleClass="section-title" text="Messages" />
+                        <JFXButton styleClass="icon-button">
+                            <graphic><SVGPath content="M12 5v14m-7-7h14" styleClass="header-icon"/></graphic>
+                        </JFXButton>
+                    </children>
+                </HBox>
+                <TextField promptText="Search conversations..." styleClass="search-field" />
+                <ListView fx:id="chatListView" styleClass="chat-list" VBox.vgrow="ALWAYS" />
+            </children>
+        </VBox>
+    </left>
+    <center>
+        <!-- Chat Area -->
+        <BorderPane styleClass="chat-area">
+            <top>
+                <HBox alignment="CENTER_LEFT" spacing="12.0" styleClass="chat-header">
+                    <children>
+                        <Label styleClass="user-avatar" text="A" />
+                        <VBox>
+                            <children>
+                                <Label styleClass="chat-user-name" text="Ahmet Çelik" />
+                                <Label styleClass="chat-user-status" text="Online" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </top>
+            <center>
+                <ScrollPane fx:id="messagesScrollPane" styleClass="messages-scroll" hbarPolicy="NEVER">
+                    <content>
+                        <VBox fx:id="messagesContainer" styleClass="messages-container" />
+                    </content>
+                </ScrollPane>
+            </center>
+            <bottom>
+                <HBox alignment="CENTER_LEFT" spacing="12.0" styleClass="message-input-area">
+                    <children>
+                        <TextField fx:id="messageField" promptText="Type a message..." styleClass="message-input" HBox.hgrow="ALWAYS" />
+                        <JFXButton fx:id="sendButton" styleClass="send-button">
+                            <graphic><SVGPath content="M22 2L11 13 M22 2l-7 20-4-9-9-4 20-7z" styleClass="send-icon"/></graphic>
+                        </JFXButton>
+                    </children>
+                </HBox>
+            </bottom>
+        </BorderPane>
+    </center>
+</BorderPane> 

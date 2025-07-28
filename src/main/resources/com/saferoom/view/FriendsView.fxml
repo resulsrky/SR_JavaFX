@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+
+<VBox spacing="24.0" styleClass="page-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.saferoom.controller.FriendsController">
+    <children>
+        <!-- Header -->
+        <HBox alignment="CENTER_LEFT" spacing="16.0">
+            <children>
+                <Label styleClass="section-title" text="Friends" />
+                <JFXButton styleClass="action-button" text="Add Friend">
+                    <graphic><SVGPath content="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2 M9 7a4 4 0 1 0 0 8 4 4 0 0 0 0-8z M20 8v6 M23 11h-6" styleClass="action-button-icon"/></graphic>
+                </JFXButton>
+            </children>
+        </HBox>
+
+        <!-- Search -->
+        <TextField promptText="Search friends..." styleClass="search-field" />
+
+        <!-- Friends Tabs -->
+        <TabPane fx:id="friendsTabPane" styleClass="friends-tab-pane" VBox.vgrow="ALWAYS">
+            <tabs>
+                <Tab text="Online" closable="false">
+                    <content>
+                        <ListView fx:id="onlineFriendsListView" styleClass="friends-list" />
+                    </content>
+                </Tab>
+                <Tab text="All Friends" closable="false">
+                    <content>
+                        <ListView fx:id="allFriendsListView" styleClass="friends-list" />
+                    </content>
+                </Tab>
+                <Tab text="Pending" closable="false">
+                    <content>
+                        <ListView fx:id="pendingFriendsListView" styleClass="friends-list" />
+                    </content>
+                </Tab>
+                <Tab text="Blocked" closable="false">
+                    <content>
+                        <ListView fx:id="blockedFriendsListView" styleClass="friends-list" />
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</VBox> 
