@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 
 <!-- Action Card Ana Konteyneri -->
-<VBox styleClass="action-card" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.saferoom.controller.cards.ActionCardController">
+<VBox fx:id="rootCard" styleClass="action-card" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.saferoom.controller.cards.ActionCardController">
     <children>
         <StackPane fx:id="iconContainer" styleClass="action-card-icon-container">
             <children>

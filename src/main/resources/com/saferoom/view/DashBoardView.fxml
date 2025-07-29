@@ -2,28 +2,29 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.shape.SVGPath?>
 
-<!-- Ana Dashboard Konteyneri -->
-<VBox spacing="30.0" styleClass="page-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.saferoom.controller.DashboardController">
+<VBox spacing="32.0" styleClass="page-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.saferoom.controller.DashboardController">
     <children>
-        <!-- "Welcome Back" Banner'ı -->
-        <VBox styleClass="welcome-banner">
+        <!-- Welcome Banner -->
+        <VBox styleClass="dashboard-card">
             <children>
-                <Label styleClass="welcome-title" text="Welcome back, Username!" />
-                <Label styleClass="welcome-subtitle" text="You have 2 new notifications and 1 pending room invite." />
+                <Label styleClass="dashboard-title" text="Welcome back!" />
+                <Label styleClass="dashboard-subtitle" text="Ready to start a secure conversation? Choose an action below." />
             </children>
         </VBox>
-        <!-- Ana İçerik Alanı (Hızlı Eylemler ve Son Aktiviteler) -->
-        <HBox spacing="30.0" VBox.vgrow="ALWAYS">
+        
+        <!-- Main Content Area -->
+        <HBox spacing="32.0" VBox.vgrow="ALWAYS">
             <children>
-                <!-- Sol Taraf: Hızlı Eylemler -->
-                <VBox spacing="20.0" HBox.hgrow="ALWAYS">
+                <!-- Left Side: Quick Actions Grid -->
+                <VBox spacing="24.0" HBox.hgrow="ALWAYS">
                     <children>
                         <Label styleClass="section-title" text="Quick Actions" />
                         <GridPane hgap="20.0" vgap="20.0" VBox.vgrow="ALWAYS">
@@ -36,7 +37,7 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <!-- Action Card'ları fx:include ile dahil ediyoruz -->
+                                <!-- Action Cards -->
                                 <fx:include fx:id="newMeetingCard" source="cards/ActionCard.fxml" />
                                 <fx:include fx:id="joinRoomCard" source="cards/ActionCard.fxml" GridPane.columnIndex="1" />
                                 <fx:include fx:id="scheduleRoomCard" source="cards/ActionCard.fxml" GridPane.rowIndex="1" />
@@ -45,11 +46,12 @@
                         </GridPane>
                     </children>
                 </VBox>
-                <!-- Sağ Taraf: Son Aktiviteler -->
-                <VBox maxWidth="350.0" minWidth="300.0" spacing="20.0">
+                
+                <!-- Right Side: Recent Activity -->
+                <VBox maxWidth="380.0" minWidth="320.0" spacing="24.0">
                     <children>
                         <Label styleClass="section-title" text="Recent Activity" />
-                        <VBox fx:id="activityContainer" styleClass="activity-timeline" VBox.vgrow="ALWAYS" />
+                        <VBox fx:id="activityContainer" styleClass="dashboard-card" VBox.vgrow="ALWAYS" spacing="16.0" />
                     </children>
                 </VBox>
             </children>

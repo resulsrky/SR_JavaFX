@@ -2,22 +2,22 @@ package com.saferoom.controller;
 
 import com.saferoom.utils.ViewManager;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 
 import java.io.IOException;
+import java.util.Objects;
 
 /**
- * LoginView.fxml dosyasının kontrolcüsü.
- * Kullanıcı giriş işlemlerini ve arayüz etkileşimlerini yönetir.
+ * Controller for LoginView.fxml.
+ * Manages user authentication and UI interactions.
  */
 public class LoginController {
 
-    // FXML dosyasındaki fx:id'ler ile bu değişkenler birbirine bağlanır.
     @FXML
     private VBox rootPane;
 
@@ -28,53 +28,97 @@ public class LoginController {
     private PasswordField passwordField;
 
     @FXML
+    private CheckBox rememberMe;
+
+    @FXML
+    private Hyperlink forgotPasswordLink;
+
+    @FXML
     private Button signInButton;
 
     @FXML
     private Hyperlink signUpLink;
 
     /**
-     * Bu metod, FXML dosyası yüklendiğinde JavaFX tarafından otomatik olarak çağrılır.
-     * Buton tıklama gibi olayları ve başlangıç ayarlarını burada tanımlarız.
+     * Called by JavaFX when FXML is loaded.
+     * Set up event handlers and initial configurations.
      */
     @FXML
     public void initialize() {
-        // Butonun ve linkin genişliklerini, VBox'un genişliğine göre dinamik olarak ayarlıyoruz
-        signInButton.prefWidthProperty().bind(rootPane.widthProperty().multiply(0.8)); // Pencerenin %80'ine ayarla
-        signUpLink.prefWidthProperty().bind(rootPane.widthProperty().multiply(0.8));
-
+        // Set up event handlers
         signInButton.setOnAction(event -> handleSignIn());
         signUpLink.setOnAction(event -> handleSignUp());
+        forgotPasswordLink.setOnAction(event -> handleForgotPassword());
+        
+        // Enable sign in on Enter key
+        passwordField.setOnAction(event -> handleSignIn());
     }
 
     /**
-     * "Sign In" butonuna tıklandığında çalışacak olan metod.
+     * Handle "Sign In" button click.
      */
     private void handleSignIn() {
         String username = usernameField.getText();
         String password = passwordField.getText();
+        boolean remember = rememberMe.isSelected();
 
-        System.out.println("Giriş denendi. Kullanıcı Adı: " + username);
+        System.out.println("Sign in attempt. Username: " + username + ", Remember me: " + remember);
 
-        // TODO: Backend ile iletişim kurarak giriş doğrulama mantığı buraya eklenecek.
-        // Şimdilik, girişin başarılı olduğunu varsayarak ana ekrana geçiyoruz.
+        // TODO: Implement actual authentication logic with backend
+        // For now, we'll proceed directly to the main view
 
         try {
-            // Mevcut pencereyi (Stage) alıyoruz. rootPane'in sahnesinden pencereye ulaşıyoruz.
+            // Get current stage from rootPane
             Stage currentStage = (Stage) rootPane.getScene().getWindow();
-            // ViewManager'ı kullanarak MainView.fxml'e geçiş yapıyoruz
-            ViewManager.switchScene(currentStage, "MainView.fxml");
+            
+            // Load MainView.fxml
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/saferoom/view/MainView.fxml")));
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/saferoom/styles/styles.css")).toExternalForm());
+            
+            currentStage.setScene(scene);
+            currentStage.centerOnScreen();
+            
         } catch (IOException e) {
             e.printStackTrace();
-            // TODO: Kullanıcıya bir hata mesajı göster (örneğin bir dialog ile).
+            showError("Failed to load main view");
         }
     }
 
     /**
-     * "Sign Up" linkine tıklandığında çalışacak olan metod.
+     * Handle "Sign Up" link click.
      */
     private void handleSignUp() {
-        System.out.println("Kayıt ekranına geçiş yapılıyor...");
-        // TODO: Mevcut sahneyi değiştirerek kayıt ekranını (RegisterView.fxml) yükleme mantığı buraya eklenecek.
+        System.out.println("Navigating to registration screen...");
+        
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Sign Up");
+        alert.setHeaderText("Registration");
+        alert.setContentText("Registration feature will be implemented soon!");
+        alert.showAndWait();
+    }
+
+    /**
+     * Handle "Forgot password?" link click.
+     */
+    private void handleForgotPassword() {
+        System.out.println("Forgot password clicked...");
+        
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Password Recovery");
+        alert.setHeaderText("Forgot Password");
+        alert.setContentText("Password recovery feature will be implemented soon!");
+        alert.showAndWait();
+    }
+
+    /**
+     * Show error dialog
+     */
+    private void showError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

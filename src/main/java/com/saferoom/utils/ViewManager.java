@@ -1,34 +1,45 @@
 package com.saferoom.utils;
 
-import com.saferoom.MainApp;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
+import javafx.scene.layout.BorderPane;
 import java.io.IOException;
-import java.util.Objects;
 
-/**
- * FXML sahneleri arasında geçiş yapmayı yöneten yardımcı sınıf.
- */
 public class ViewManager {
-
-    /**
-     * Mevcut sahneyi yeni bir FXML dosyasıyla değiştirir.
-     * @param currentStage Mevcut pencere (Stage)
-     * @param fxmlFile Yüklenecek yeni FXML dosyasının adı (ör: "MainView.fxml")
-     */
-    public static void switchScene(Stage currentStage, String fxmlFile) throws IOException {
-        // Yeni FXML dosyasını yükle
-        Parent root = FXMLLoader.load(Objects.requireNonNull(MainApp.class.getResource("view/" + fxmlFile)));
-
-        // Yeni sahneyi oluştur ve stilleri uygula
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(Objects.requireNonNull(MainApp.class.getResource("styles/styles.css")).toExternalForm());
-
-        // Pencerenin sahnesini yeni sahne ile değiştir
-        currentStage.setScene(scene);
-        currentStage.centerOnScreen(); // Pencereyi ekranın ortasına al
+    private static ViewManager instance;
+    private BorderPane mainPane;
+    
+    private ViewManager() {
+        // Private constructor for singleton
+    }
+    
+    public static ViewManager getInstance() {
+        if (instance == null) {
+            instance = new ViewManager();
+        }
+        return instance;
+    }
+    
+    public void setMainPane(BorderPane mainPane) {
+        this.mainPane = mainPane;
+    }
+    
+    public void showVideoCallView() {
+        loadView("VideoCallView.fxml");
+    }
+    
+    public void showFileVaultView() {
+        loadView("FileVaultView.fxml");
+    }
+    
+    private void loadView(String fxmlFile) {
+        try {
+            if (mainPane != null) {
+                Parent view = FXMLLoader.load(getClass().getResource("/com/saferoom/view/" + fxmlFile));
+                mainPane.setCenter(view);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

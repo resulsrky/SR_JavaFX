@@ -22,7 +22,7 @@ public class SettingsController {
 
     @FXML
     public void initialize() {
-        // Toggle butonlarına event listener'lar ekle
+        // Add event listeners to toggle buttons
         setupToggleListeners();
         setupSliderListeners();
     }
@@ -66,12 +66,12 @@ public class SettingsController {
     @FXML
     private void clearAllData() {
         System.out.println("Clear All Data clicked");
-        // Burada kullanıcıya onay dialog'u gösterilmeli
+        // User confirmation dialog should be shown here
     }
 
     @FXML
     private void deleteAccount() {
         System.out.println("Delete Account clicked");
-        // Burada kullanıcıya onay dialog'u gösterilmeli
+        // User confirmation dialog should be shown here
     }
 } 

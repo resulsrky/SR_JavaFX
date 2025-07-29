@@ -21,18 +21,46 @@ public class DashboardController {
 
     @FXML
     public void initialize() {
-        // Kartların içeriğini ayarla
-        newMeetingCardController.setData("M12 5v14m-7-7h14", "New Meeting", "Instant Secure Room");
-        joinRoomCardController.setData("M5 12h14m-7-7 7 7-7 7", "Join Room", "Connect to Tunnel");
-        scheduleRoomCardController.setData("M12 6v6l4 2 M12 22A10 10 0 1 1 12 2a10 10 0 0 1 0 20z", "Schedule Room", "Programmatic Sync");
-        encryptedFilesCardController.setData("M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6 M12 18v-6 M10 14h4", "Encrypted Files", "File Vault");
+        // Set up card content
+        newMeetingCardController.setData("M12 5v14m-7-7h14", "New Meeting", "Start Instant Room");
+        joinRoomCardController.setData("M5 12h14m-7-7 7 7-7 7", "Join Room", "Connect to Room");
+        scheduleRoomCardController.setData("M12 6v6l4 2 M12 22A10 10 0 1 1 12 2a10 10 0 0 1 0 20z", "Schedule Room", "Plan Meeting");
+        encryptedFilesCardController.setData("M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z M14 2v6h6 M12 18v-6 M10 14h4", "Encrypted Files", "Access File Vault");
 
-        // Modern timeline aktivitelerini ekle
-        addTimelineActivity("🚀", "You started a secure room 'Project Phoenix'", "2 minutes ago");
-        addTimelineActivity("👥", "Zeynep Kaya joined 'Project Phoenix'", "5 minutes ago");
-        addTimelineActivity("📁", "You shared 'design_final_v3.zip' in File Vault", "1 hour ago");
-        addTimelineActivity("💬", "New message from Ahmet Çelik", "2 hours ago");
+        // Set up card click handlers
+        newMeetingCardController.setOnAction(e -> handleNewMeeting());
+        joinRoomCardController.setOnAction(e -> handleJoinRoom());
+        scheduleRoomCardController.setOnAction(e -> handleScheduleRoom());
+        encryptedFilesCardController.setOnAction(e -> handleFileVault());
+
+        // Add modern timeline activities
+        addTimelineActivity("🚀", "You started a secure room 'Project Alpha'", "2 minutes ago");
+        addTimelineActivity("👥", "Sarah Davis joined 'Project Alpha'", "5 minutes ago");
+        addTimelineActivity("📁", "You shared 'design_final.zip' in File Vault", "1 hour ago");
+        addTimelineActivity("💬", "New message from John Doe", "2 hours ago");
         addTimelineActivity("🔒", "End-to-end encryption enabled", "1 day ago");
+    }
+
+    private void handleNewMeeting() {
+        System.out.println("Starting new meeting...");
+        // Navigate to video call view
+        com.saferoom.utils.ViewManager.getInstance().showVideoCallView();
+    }
+
+    private void handleJoinRoom() {
+        System.out.println("Joining room...");
+        // TODO: Show join room dialog
+    }
+
+    private void handleScheduleRoom() {
+        System.out.println("Scheduling room...");
+        // TODO: Show schedule room dialog
+    }
+
+    private void handleFileVault() {
+        System.out.println("Opening file vault...");
+        // Navigate to file vault view
+        com.saferoom.utils.ViewManager.getInstance().showFileVaultView();
     }
 
     private void addTimelineActivity(String icon, String description, String timeAgo) {
@@ -40,11 +68,11 @@ public class DashboardController {
         activityItem.getStyleClass().add("timeline-item");
         activityItem.setSpacing(12.0);
 
-        // İkon
+        // Icon
         Label iconLabel = new Label(icon);
         iconLabel.getStyleClass().add("timeline-icon");
 
-        // İçerik
+        // Content
         VBox contentBox = new VBox();
         contentBox.getStyleClass().add("timeline-content");
         contentBox.setSpacing(4.0);

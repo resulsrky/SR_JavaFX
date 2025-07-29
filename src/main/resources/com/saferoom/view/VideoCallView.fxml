@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.SVGPath?>
+
+<ScrollPane fitToWidth="true" styleClass="content-scroll-pane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.saferoom.controller.VideoCallController">
+    <content>
+        <VBox spacing="32.0" styleClass="page-container">
+            <children>
+                <!-- Header Section -->
+                <VBox spacing="12.0">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" spacing="20.0">
+                            <children>
+                                <Label styleClass="section-title" text="Video Meeting" />
+                                <Label styleClass="meeting-status" text="Ready" />
+                            </children>
+                        </HBox>
+                        <Label styleClass="section-subtitle" text="Start or join a secure video conversation with end-to-end encryption." />
+                    </children>
+                </VBox>
+
+                <!-- Main Content -->
+                <HBox spacing="32.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <!-- Left Side: Video Preview -->
+                        <VBox spacing="24.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <!-- Video Preview Card -->
+                                <VBox styleClass="video-preview-card" spacing="24.0">
+                                    <children>
+                                        <!-- Video Preview Container -->
+                                        <StackPane styleClass="video-preview-container">
+                                            <children>
+                                                <!-- Camera Preview -->
+                                                <VBox styleClass="camera-preview" alignment="CENTER" spacing="20.0">
+                                                    <children>
+                                                        <StackPane styleClass="avatar-preview">
+                                                            <children>
+                                                                <Label styleClass="avatar-initial" text="U" />
+                                                            </children>
+                                                        </StackPane>
+                                                        <Label styleClass="preview-label" text="Camera Preview" />
+                                                        <Label styleClass="preview-subtitle" text="Your video will appear here when camera is enabled" />
+                                                    </children>
+                                                </VBox>
+                                                
+                                                <!-- Camera Controls -->
+                                                <HBox styleClass="camera-controls" alignment="CENTER" spacing="16.0">
+                                                    <children>
+                                                        <JFXButton fx:id="cameraToggleBtn" styleClass="control-button camera-on">
+                                                            <graphic><SVGPath content="M23 7l-7 5 7 5V7z M1 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V5z" styleClass="control-icon"/></graphic>
+                                                        </JFXButton>
+                                                        
+                                                        <JFXButton fx:id="micToggleBtn" styleClass="control-button mic-on">
+                                                            <graphic><SVGPath content="M12 1a3 3 0 0 1 3 3v8a3 3 0 0 1-6 0V4a3 3 0 0 1 3-3z M19 10v2a7 7 0 0 1-14 0v-2" styleClass="control-icon"/></graphic>
+                                                        </JFXButton>
+                                                        
+                                                        <JFXButton styleClass="control-button settings-btn">
+                                                            <graphic><SVGPath content="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 0 2l-.15.08a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1 0-2l.15-.08a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" styleClass="control-icon"/></graphic>
+                                                        </JFXButton>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </StackPane>
+
+                                        <!-- Meeting Actions -->
+                                        <HBox spacing="16.0" alignment="CENTER">
+                                            <children>
+                                                <JFXButton fx:id="startMeetingBtn" styleClass="start-meeting-button" text="Start Meeting">
+                                                    <graphic><SVGPath content="M8 5v14l11-7L8 5z" styleClass="start-icon"/></graphic>
+                                                </JFXButton>
+                                                
+                                                <JFXButton fx:id="joinMeetingBtn" styleClass="join-button" text="Join Meeting">
+                                                    <graphic><SVGPath content="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2 M9 7a4 4 0 1 0 0 8 4 4 0 0 0 0-8z M22 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75" styleClass="join-icon"/></graphic>
+                                                </JFXButton>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </VBox>
+                        
+                        <!-- Right Side: Meeting Settings -->
+                        <VBox maxWidth="400.0" minWidth="360.0" spacing="24.0">
+                            <children>
+                                <!-- Meeting Configuration -->
+                                <VBox styleClass="meeting-setup" spacing="24.0">
+                                    <children>
+                                        <Label styleClass="setup-label" text="Meeting Configuration" />
+                                        
+                                        <!-- Meeting Title -->
+                                        <VBox spacing="8.0">
+                                            <children>
+                                                <Label text="Meeting Title" styleClass="option-label" />
+                                                <JFXTextField fx:id="meetingTitleField" styleClass="setup-input" promptText="Enter meeting title..." text="SafeRoom Meeting" />
+                                            </children>
+                                        </VBox>
+
+                                        <!-- Meeting Options -->
+                                        <VBox spacing="20.0">
+                                            <children>
+                                                <Label text="Security Options" styleClass="option-label" />
+                                                
+                                                <HBox alignment="CENTER_LEFT" spacing="16.0">
+                                                    <children>
+                                                        <VBox HBox.hgrow="ALWAYS">
+                                                            <children>
+                                                                <Label styleClass="option-label" text="Waiting Room" />
+                                                                <Label styleClass="option-description" text="Control who joins your meeting" />
+                                                            </children>
+                                                        </VBox>
+                                                        <JFXToggleButton fx:id="waitingRoomToggle" selected="true" />
+                                                    </children>
+                                                </HBox>
+                                                
+                                                <HBox alignment="CENTER_LEFT" spacing="16.0">
+                                                    <children>
+                                                        <VBox HBox.hgrow="ALWAYS">
+                                                            <children>
+                                                                <Label styleClass="option-label" text="Recording" />
+                                                                <Label styleClass="option-description" text="Record meeting to secure cloud" />
+                                                            </children>
+                                                        </VBox>
+                                                        <JFXToggleButton fx:id="recordToggle" />
+                                                    </children>
+                                                </HBox>
+                                                
+                                                <HBox alignment="CENTER_LEFT" spacing="16.0">
+                                                    <children>
+                                                        <VBox HBox.hgrow="ALWAYS">
+                                                            <children>
+                                                                <Label styleClass="option-label" text="Screen Sharing" />
+                                                                <Label styleClass="option-description" text="Allow participants to share screens" />
+                                                            </children>
+                                                        </VBox>
+                                                        <JFXToggleButton fx:id="screenShareToggle" selected="true" />
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                        
+                                        <!-- Additional Actions -->
+                                        <VBox spacing="12.0">
+                                            <children>
+                                                <JFXButton fx:id="scheduleBtn" styleClass="btn-secondary" text="Schedule for Later" prefWidth="Infinity">
+                                                    <graphic><SVGPath content="M12 2v6l4 2 M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" styleClass="schedule-icon"/></graphic>
+                                                </JFXButton>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </VBox>
+                                
+                                <!-- Recent Meetings -->
+                                <VBox styleClass="recent-meetings" spacing="16.0">
+                                    <children>
+                                        <Label styleClass="section-subtitle" text="Recent Meetings" />
+                                        <VBox fx:id="recentMeetingsContainer" spacing="8.0">
+                                            <!-- Populated by controller -->
+                                        </VBox>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </content>
+</ScrollPane> 

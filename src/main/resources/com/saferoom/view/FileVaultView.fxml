@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+
+<ScrollPane fitToWidth="true" styleClass="content-scroll-pane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.saferoom.controller.FileVaultController">
+    <content>
+        <VBox spacing="24.0" styleClass="page-container">
+            <children>
+                <!-- Header -->
+                <HBox alignment="CENTER_LEFT" spacing="16.0">
+                    <children>
+                        <Label styleClass="section-title" text="File Vault" />
+                        <Label styleClass="file-count" text="231 files" />
+                        <JFXButton styleClass="action-button" text="Upload">
+                            <graphic><SVGPath content="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4 M17 8l-5-5-5 5 M12 3v12" styleClass="action-button-icon"/></graphic>
+                        </JFXButton>
+                    </children>
+                </HBox>
+
+                <!-- File Stats Cards -->
+                <HBox spacing="16.0">
+                    <children>
+                        <VBox styleClass="file-stat-card" HBox.hgrow="ALWAYS">
+                            <children>
+                                <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                    <children>
+                                        <Label styleClass="stat-icon documents" text="📄" />
+                                        <VBox>
+                                            <children>
+                                                <Label styleClass="stat-title" text="Documents" />
+                                                <Label styleClass="stat-subtitle" text="145 files, 93.5MB" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        
+                        <VBox styleClass="file-stat-card" HBox.hgrow="ALWAYS">
+                            <children>
+                                <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                    <children>
+                                        <Label styleClass="stat-icon photos" text="🖼️" />
+                                        <VBox>
+                                            <children>
+                                                <Label styleClass="stat-title" text="Photos" />
+                                                <Label styleClass="stat-subtitle" text="67 files, 22.6MB" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        
+                        <VBox styleClass="file-stat-card" HBox.hgrow="ALWAYS">
+                            <children>
+                                <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                    <children>
+                                        <Label styleClass="stat-icon videos" text="🎬" />
+                                        <VBox>
+                                            <children>
+                                                <Label styleClass="stat-title" text="Videos" />
+                                                <Label styleClass="stat-subtitle" text="12 files, 450MB" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        
+                        <VBox styleClass="file-stat-card" HBox.hgrow="ALWAYS">
+                            <children>
+                                <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                    <children>
+                                        <Label styleClass="stat-icon other" text="📦" />
+                                        <VBox>
+                                            <children>
+                                                <Label styleClass="stat-title" text="Other" />
+                                                <Label styleClass="stat-subtitle" text="7 files, 89.4MB" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+
+                <!-- File Browser -->
+                <VBox styleClass="file-browser" VBox.vgrow="ALWAYS">
+                    <children>
+                        <TabPane fx:id="fileTabPane" styleClass="file-tab-pane" tabClosingPolicy="UNAVAILABLE">
+                            <tabs>
+                                <Tab text="All Files">
+                                    <content>
+                                        <ListView fx:id="allFilesListView" styleClass="file-list" />
+                                    </content>
+                                </Tab>
+                                <Tab text="Recent">
+                                    <content>
+                                        <ListView fx:id="recentFilesListView" styleClass="file-list" />
+                                    </content>
+                                </Tab>
+                                <Tab text="Shared">
+                                    <content>
+                                        <ListView fx:id="sharedFilesListView" styleClass="file-list" />
+                                    </content>
+                                </Tab>
+                                <Tab text="Favorites">
+                                    <content>
+                                        <ListView fx:id="favoriteFilesListView" styleClass="file-list" />
+                                    </content>
+                                </Tab>
+                            </tabs>
+                        </TabPane>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </content>
+</ScrollPane> 

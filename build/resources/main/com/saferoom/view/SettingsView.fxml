@@ -17,22 +17,22 @@
         <VBox spacing="32.0" styleClass="page-container">
             <children>
                 <!-- Header -->
-                <Label styleClass="section-title" text="Settings" />
+                <Label styleClass="section-title" text="Ayarlar" />
 
                 <!-- Profile Settings -->
                 <VBox spacing="16.0" styleClass="settings-section">
                     <children>
-                        <Label styleClass="settings-category-title" text="Profile" />
+                        <Label styleClass="settings-category-title" text="Profil" />
                         <HBox alignment="CENTER_LEFT" spacing="16.0">
                             <children>
                                 <Label styleClass="user-avatar-large" text="U" />
                                 <VBox spacing="4.0">
                                     <children>
-                                        <Label styleClass="profile-name" text="Username" />
-                                        <Label styleClass="profile-email" text="user@saferoom.com" />
+                                        <Label styleClass="profile-name" text="Kullanıcı Adı" />
+                                        <Label styleClass="profile-email" text="kullanici@saferoom.com" />
                                     </children>
                                 </VBox>
-                                <JFXButton styleClass="secondary-button" text="Change Avatar" />
+                                <JFXButton styleClass="secondary-button" text="Avatar Değiştir" />
                             </children>
                         </HBox>
                         <Separator styleClass="settings-separator" />
@@ -42,14 +42,14 @@
                 <!-- Privacy Settings -->
                 <VBox spacing="16.0" styleClass="settings-section">
                     <children>
-                        <Label styleClass="settings-category-title" text="Privacy & Security" />
+                        <Label styleClass="settings-category-title" text="Gizlilik ve Güvenlik" />
                         
                         <HBox alignment="CENTER_LEFT" spacing="16.0">
                             <children>
                                 <VBox HBox.hgrow="ALWAYS">
                                     <children>
-                                        <Label styleClass="setting-label" text="Two-Factor Authentication" />
-                                        <Label styleClass="setting-description" text="Add an extra layer of security to your account" />
+                                        <Label styleClass="setting-label" text="İki Faktörlü Kimlik Doğrulama" />
+                                        <Label styleClass="setting-description" text="Hesabınıza ekstra güvenlik katmanı ekleyin" />
                                     </children>
                                 </VBox>
                                 <JFXToggleButton fx:id="twoFactorToggle" />
@@ -60,8 +60,8 @@
                             <children>
                                 <VBox HBox.hgrow="ALWAYS">
                                     <children>
-                                        <Label styleClass="setting-label" text="End-to-End Encryption" />
-                                        <Label styleClass="setting-description" text="Enable automatic encryption for all communications" />
+                                        <Label styleClass="setting-label" text="Uçtan Uca Şifreleme" />
+                                        <Label styleClass="setting-description" text="Tüm iletişimler için otomatik şifreleme etkinleştir" />
                                     </children>
                                 </VBox>
                                 <JFXToggleButton fx:id="encryptionToggle" selected="true" />
@@ -72,8 +72,8 @@
                             <children>
                                 <VBox HBox.hgrow="ALWAYS">
                                     <children>
-                                        <Label styleClass="setting-label" text="Show Online Status" />
-                                        <Label styleClass="setting-description" text="Let friends see when you're online" />
+                                        <Label styleClass="setting-label" text="Çevrimiçi Durumu Göster" />
+                                        <Label styleClass="setting-description" text="Arkadaşlarınızın çevrimiçi olduğunuzu görmesine izin ver" />
                                     </children>
                                 </VBox>
                                 <JFXToggleButton fx:id="onlineStatusToggle" selected="true" />
@@ -87,14 +87,14 @@
                 <!-- Notifications -->
                 <VBox spacing="16.0" styleClass="settings-section">
                     <children>
-                        <Label styleClass="settings-category-title" text="Notifications" />
+                        <Label styleClass="settings-category-title" text="Bildirimler" />
 
                         <HBox alignment="CENTER_LEFT" spacing="16.0">
                             <children>
                                 <VBox HBox.hgrow="ALWAYS">
                                     <children>
-                                        <Label styleClass="setting-label" text="Desktop Notifications" />
-                                        <Label styleClass="setting-description" text="Get notified about new messages and calls" />
+                                        <Label styleClass="setting-label" text="Masaüstü Bildirimleri" />
+                                        <Label styleClass="setting-description" text="Yeni mesajlar ve aramalar için bildirim al" />
                                     </children>
                                 </VBox>
                                 <JFXToggleButton fx:id="desktopNotificationsToggle" selected="true" />
@@ -105,8 +105,8 @@
                             <children>
                                 <VBox HBox.hgrow="ALWAYS">
                                     <children>
-                                        <Label styleClass="setting-label" text="Sound Notifications" />
-                                        <Label styleClass="setting-description" text="Play sounds for notifications" />
+                                        <Label styleClass="setting-label" text="Ses Bildirimleri" />
+                                        <Label styleClass="setting-description" text="Bildirimler için ses çal" />
                                     </children>
                                 </VBox>
                                 <JFXToggleButton fx:id="soundNotificationsToggle" selected="true" />
@@ -115,7 +115,7 @@
 
                         <VBox spacing="8.0">
                             <children>
-                                <Label styleClass="setting-label" text="Notification Volume" />
+                                <Label styleClass="setting-label" text="Bildirim Ses Düzeyi" />
                                 <JFXSlider fx:id="notificationVolumeSlider" max="100.0" min="0.0" value="75.0" />
                             </children>
                         </VBox>
@@ -127,14 +127,14 @@
                 <!-- App Settings -->
                 <VBox spacing="16.0" styleClass="settings-section">
                     <children>
-                        <Label styleClass="settings-category-title" text="Application" />
+                        <Label styleClass="settings-category-title" text="Uygulama" />
 
                         <HBox alignment="CENTER_LEFT" spacing="16.0">
                             <children>
                                 <VBox HBox.hgrow="ALWAYS">
                                     <children>
-                                        <Label styleClass="setting-label" text="Auto-start with System" />
-                                        <Label styleClass="setting-description" text="Start SafeRoom when your computer starts" />
+                                        <Label styleClass="setting-label" text="Sistem ile Otomatik Başlat" />
+                                        <Label styleClass="setting-description" text="Bilgisayar açıldığında SafeRoom'u başlat" />
                                     </children>
                                 </VBox>
                                 <JFXToggleButton fx:id="autoStartToggle" />
@@ -145,8 +145,8 @@
                             <children>
                                 <VBox HBox.hgrow="ALWAYS">
                                     <children>
-                                        <Label styleClass="setting-label" text="Minimize to System Tray" />
-                                        <Label styleClass="setting-description" text="Keep the app running in the background" />
+                                        <Label styleClass="setting-label" text="Sistem Tepsisine Küçült" />
+                                        <Label styleClass="setting-description" text="Uygulamayı arka planda çalışır durumda tut" />
                                     </children>
                                 </VBox>
                                 <JFXToggleButton fx:id="minimizeToTrayToggle" selected="true" />
@@ -160,16 +160,16 @@
                 <!-- Danger Zone -->
                 <VBox spacing="16.0" styleClass="settings-section danger-zone">
                     <children>
-                        <Label styleClass="settings-category-title danger-title" text="Danger Zone" />
+                        <Label styleClass="settings-category-title danger-title" text="Tehlikeli Alan" />
                         
                         <HBox spacing="16.0">
                             <children>
-                                <JFXButton styleClass="danger-button" text="Clear All Data">
-                                    <graphic><SVGPath content="M3 6h18 M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" styleClass="danger-icon"/></graphic>
+                                <JFXButton styleClass="danger-button" text="Tüm Verileri Temizle">
+                                    <graphic><SVGPath content="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" styleClass="danger-icon"/></graphic>
                                 </JFXButton>
                                 
-                                <JFXButton styleClass="danger-button" text="Delete Account">
-                                    <graphic><SVGPath content="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z M18 9l-6 6 M12 9l6 6" styleClass="danger-icon"/></graphic>
+                                <JFXButton styleClass="danger-button" text="Hesabı Sil">
+                                    <graphic><SVGPath content="M21 4H8l-7 8 7 8h13a2 2 0 002-2V6a2 2 0 00-2-2zM18 9l-6 6M12 9l6 6" styleClass="danger-icon"/></graphic>
                                 </JFXButton>
                             </children>
                         </HBox>

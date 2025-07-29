@@ -1,31 +1,37 @@
 package com.saferoom.controller;
 
-import com.jfoenix.controls.JFXButton;
-import com.saferoom.MainApp;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
+import com.saferoom.utils.ViewManager;
 
 public class MainController {
 
+    @FXML private BorderPane mainPane;
+    @FXML private HBox topBar;
     @FXML private Label viewTitleLabel;
-    @FXML private ScrollPane contentArea;
-    @FXML private VBox navBox;
-    @FXML private JFXButton dashboardButton;
-    @FXML private JFXButton messagesButton;
-    @FXML private JFXButton friendsButton;
-    @FXML private JFXButton fileVaultButton;
-    @FXML private JFXButton settingsButton;
+    @FXML private Button dashboardButton;
+    @FXML private Button messagesButton;
+    @FXML private Button friendsButton;
+    @FXML private Button fileVaultButton;
+    @FXML private Button settingsButton;
+
+    private double xOffset = 0;
+    private double yOffset = 0;
 
     @FXML
     public void initialize() {
+        // Initialize ViewManager with mainPane
+        ViewManager.getInstance().setMainPane(mainPane);
+        
         handleDashboard();
 
         dashboardButton.setOnAction(event -> handleDashboard());
@@ -37,8 +43,8 @@ public class MainController {
 
     private void handleDashboard() {
         setActiveButton(dashboardButton);
-        viewTitleLabel.setText("Home");
-        loadView("DashboardView.fxml");
+        viewTitleLabel.setText("Dashboard");
+        loadView("DashBoardView.fxml");
     }
 
     private void handleMessages() {
@@ -56,7 +62,7 @@ public class MainController {
     private void handleFileVault() {
         setActiveButton(fileVaultButton);
         viewTitleLabel.setText("File Vault");
-        // loadView("FileVaultView.fxml"); // Bu view henüz oluşturulmadı
+        loadView("FileVaultView.fxml");
     }
 
     private void handleSettings() {
@@ -65,28 +71,26 @@ public class MainController {
         loadView("SettingsView.fxml");
     }
 
-    /**
-     * Mevcut sahnenin Stage'ini (penceresini) döndürür.
-     */
     private Stage getStage() {
-        return (Stage) viewTitleLabel.getScene().getWindow();
+        return (Stage) mainPane.getScene().getWindow();
     }
 
-    /**
-     * Belirtilen FXML dosyasını ana içerik alanına yükler.
-     * @param fxmlFile Yüklenecek FXML dosyasının adı
-     */
     private void loadView(String fxmlFile) {
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(MainApp.class.getResource("view/" + fxmlFile)));
-            contentArea.setContent(root);
+            Parent view = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/saferoom/view/" + fxmlFile)));
+            mainPane.setCenter(view);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void setActiveButton(JFXButton activeButton) {
-        navBox.getChildren().forEach(node -> node.getStyleClass().remove("active"));
+    private void setActiveButton(Button activeButton) {
+        dashboardButton.getStyleClass().remove("active");
+        messagesButton.getStyleClass().remove("active");
+        friendsButton.getStyleClass().remove("active");
+        fileVaultButton.getStyleClass().remove("active");
+        settingsButton.getStyleClass().remove("active");
+
         activeButton.getStyleClass().add("active");
     }
 }

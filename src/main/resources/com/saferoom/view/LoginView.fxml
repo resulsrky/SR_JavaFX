@@ -2,54 +2,92 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.SVGPath?>
+<?import com.jfoenix.controls.JFXButton?>
 
-<!-- Ana Konteyner: StackPane, elemanları üst üste yığarak ortalamayı kolaylaştırır -->
-<StackPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="login-background" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.saferoom.controller.LoginController">
+<StackPane alignment="CENTER" styleClass="login-background" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.saferoom.controller.LoginController">
     <children>
-        <!-- Giriş Paneli: VBox, elemanları dikey olarak sıralar -->
-        <VBox fx:id="rootPane" alignment="CENTER" maxHeight="550.0" maxWidth="450.0" spacing="30.0" styleClass="login-pane">
+        <VBox fx:id="rootPane" alignment="CENTER" spacing="20.0" styleClass="login-pane">
             <children>
-                <!-- Logo ve Başlık Alanı -->
-                <VBox alignment="CENTER" spacing="10.0">
+                <!-- Logo and Title -->
+                <VBox alignment="CENTER" spacing="16.0">
                     <children>
-                        <StackPane prefHeight="112.0" prefWidth="112.0">
+                        <StackPane prefHeight="80.0" prefWidth="80.0">
                             <children>
-                                <!-- SVG İkonu: React'teki logonun aynısı -->
-                                <SVGPath content="M12 2L2 7V17L12 22L22 17V7L12 2Z M16.5 8C16.5 10 15 11 12 12C9 13 7.5 14 7.5 16" styleClass="logo-icon" />
+                                <SVGPath content="M12 2L2 7V17L12 22L22 17V7L12 2Z M16.5 8C16.5 10 15 11 12 12C9 13 7.5 14 7.5 16" fill="#2196F3" scaleX="2.0" scaleY="2.0" />
                             </children>
                         </StackPane>
-                        <Label styleClass="title-label" text="Welcome Back" />
-                        <Label styleClass="subtitle-label" text="Sign in to continue to SafeRoom" />
+                        <Label styleClass="login-title" text="Welcome Back" />
+                        <Label styleClass="login-subtitle" text="Sign in to continue to SafeRoom" />
                     </children>
                 </VBox>
-                <!-- Kullanıcı Adı ve Şifre Alanı -->
-                <VBox spacing="15.0">
+                
+                <!-- Input Fields -->
+                <VBox spacing="16.0">
                     <children>
-                        <TextField fx:id="usernameField" promptText="Username" styleClass="input-field" prefWidth="250" />
-                        <PasswordField fx:id="passwordField" promptText="Password" styleClass="input-field" prefWidth="250" />
+                        <TextField fx:id="usernameField" promptText="Email or Username" styleClass="text-field" />
+                        <PasswordField fx:id="passwordField" promptText="Password" styleClass="password-field" />
+                        
+                        <!-- Remember Me & Forgot Password -->
+                        <HBox alignment="CENTER" spacing="0">
+                            <children>
+                                <CheckBox fx:id="rememberMe" text="Remember me" styleClass="remember-checkbox">
+                                    <HBox.margin>
+                                        <Insets right="10.0" />
+                                    </HBox.margin>
+                                </CheckBox>
+                                <StackPane HBox.hgrow="ALWAYS" />
+                                <Hyperlink fx:id="forgotPasswordLink" styleClass="forgot-password" text="Forgot password?" />
+                            </children>
+                        </HBox>
                     </children>
                 </VBox>
-                <!-- Giriş Butonu -->
-                <Button fx:id="signInButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="400.0" styleClass="login-button" text="Sign In" />
-                <!-- Kayıt Ol Linki -->
+                
+                <!-- Sign In Button -->
+                <Button fx:id="signInButton" mnemonicParsing="false" prefWidth="Infinity" styleClass="login-button" text="Sign In" />
+                
+                <!-- Divider -->
+                <HBox alignment="CENTER" spacing="16.0">
+                    <children>
+                        <Separator HBox.hgrow="ALWAYS" />
+                        <Label styleClass="divider-text" text="OR" />
+                        <Separator HBox.hgrow="ALWAYS" />
+                    </children>
+                </HBox>
+                
+                <!-- Social Login -->
+                <VBox spacing="12.0">
+                    <children>
+                        <JFXButton styleClass="social-button" text="Continue with Google" prefWidth="Infinity">
+                            <graphic>
+                                <SVGPath content="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#4285F4" />
+                            </graphic>
+                        </JFXButton>
+                        <JFXButton styleClass="social-button" text="Continue with GitHub" prefWidth="Infinity">
+                            <graphic>
+                                <SVGPath content="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" fill="#ffffff" />
+                            </graphic>
+                        </JFXButton>
+                    </children>
+                </VBox>
+                
+                <!-- Sign Up Link -->
                 <HBox alignment="CENTER">
                     <children>
-                        <Label styleClass="footer-label" text="Don't have an account? " />
-                        <Hyperlink fx:id="signUpLink" styleClass="signup-link" text="Sign Up" />
+                        <Label styleClass="signup-link" text="Don't have an account? " />
+                        <Hyperlink fx:id="signUpLink" styleClass="signup-link hyperlink" text="Sign Up" />
                     </children>
                 </HBox>
             </children>
-            <padding>
-                <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
-            </padding>
         </VBox>
     </children>
 </StackPane>
